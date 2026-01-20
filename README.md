@@ -1,9 +1,8 @@
-[README.md](https://github.com/user-attachments/files/24731539/README.md)
+[README.md](https://github.com/user-attachments/files/24731681/README.md)
 # ECTO: Entropy-Initiated Coupled-Trait ODEs
 
 **Computational Repository for PLOS ONE Submission**
-*by: Anderson M. Rodriguez*
-*2026*
+*by: Anderson Rodriguez, 2026*
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -18,7 +17,7 @@ The framework is validated on two independent longitudinal datasets:
 - **Primary Dataset (Track A):** Swedish Adoption/Twin Study of Aging (SATSA), 1984–2007 (6 waves)
 - **Validation Dataset (Track B):** U.S. dental student longitudinal survey, D1–D4 (4 waves)
 
-Entropy here functions as a compact summary of population heterogeneity rather than a dynamical driver, and the coupled ODEs supply an interpretable alternative to high-dimensional or black-box machine-learning approaches.
+Entropy here functions as a compact summary of population heterogeneity rather than a dynamical driver, and the coupled ODEs supply an interpretable alternative to high-dimensional or black-box machine-learning approaches. This framework establishes a concise, transparent method for linking information-theoretic preprocessing with cohort-level dynamical modeling.
 
 ---
 
@@ -92,7 +91,7 @@ where the selection pressure term is:
 s(N) = αN + β²P
 ```
 
-**State Variable P(t): Pleiotropic Dynamics**
+**State Variable P(t): Coupled State Dynamics**
 ```
 dP/dt = μP − βP·(E_metabolic / G)
 ```
@@ -123,7 +122,7 @@ The kernel N/(N+K) prevents unbounded amplification at low state values and intr
 | **γ** | Amplification rate for the stress state variable |
 | **K** | Positive saturation constant controlling stress sensitivity |
 
-All parameters are freely estimated during model fitting. They do not correspond to biological or psychological mechanisms; instead, they shape the qualitative behavior of the autonomous dynamical system.
+All parameters are freely estimated during model fitting. They do not correspond to biological or psychological mechanisms; instead, they shape the qualitative behavior of the autonomous dynamical system. The structure is selected for interpretability, low dimensionality, and flexibility across datasets.
 
 ### Initialization
 
@@ -138,7 +137,7 @@ All simulations are initialized by setting N(t₀) = H*(t₀), using the pooled 
 Pedersen, Nancy L. Swedish Adoption/Twin Study on Aging (SATSA), 
 1984, 1987, 1990, 1993, 2004, 2007, and 2010. 
 Inter-university Consortium for Political and Social Research [distributor], 2015-05-13.
-https://doi.org/10.3886/ICPSR03843.v2
+DOI: 10.1017/s0001566000006681
 ```
 
 **Traits analyzed:** P9 Satisfaction, L10 Fulfillment, P4 Worry, P8 Hot-Tempered, P11 Indignant, L11 Depressed, N49 Curiosity, S28 Excitement Preference, I8 Impulsivity, A1 Competitive Ambition, L1 Life Optimism, P2 Rushed Feeling
@@ -147,10 +146,11 @@ https://doi.org/10.3886/ICPSR03843.v2
 
 ### Dental Student Dataset (Track B)
 ```
-Leite TC, Wankiiri-Hale CR, Shah NH, Vasquez CS, Pavlowski EM, Koury SE, et al. (2025) 
+Leite TC, Wankiiri-Hale CR, Shah NH, Vasquez CS, Pavlowski EM, Koury SE, 
+Kim J, Ceravolo KM, Weinberg SM, & Horvath Z. (2025) 
 Change is never easy: Exploring the transition from undergraduate to dental student 
 in a U.S.-based program. PLoS ONE 20(4): e0321494. 
-https://doi.org/10.1371/journal.pone.0321494
+DOI: 10.1371/journal.pone.0321494
 ```
 
 **Variables analyzed:** 
@@ -304,17 +304,27 @@ The narrow range indicates a well-behaved optimization landscape.
 
 ---
 
-## Extending the Framework
+## Reproducing Results
 
-### Adding New Datasets
+### Working Example: Entropy Calculation
 
-1. Format Likert data as frequency counts per response category per wave
-2. Compute Shannon entropy: `H = −Σ pᵢ log₂(pᵢ)`
-3. Normalize entropy series: `(x − min) / (max − min)`
+From Appendix A of the supplementary material, for the 1984 response distribution for trait P9 Satisfaction:
 
-### Modifying the ODE System
+```
+x = [76, 231, 294, 611, 698]
+```
 
-The core system is defined in the `system()` function:
+Shannon entropy is computed as:
+
+```
+H(x) = −Σᵢ (xᵢ/Σⱼxⱼ) log₂(xᵢ/Σⱼxⱼ) ≈ 2.11 bits
+```
+
+This reflects high response dispersion relative to the theoretical maximum of log₂(5) ≈ 2.32 bits.
+
+### Core ODE Function
+
+The system function as implemented in the repository:
 
 ```python
 def system(y, t, mu, alpha, beta, gamma, c1, c2, c3, K):
@@ -357,7 +367,9 @@ If you use this code or methodology, please cite:
 
 ## License
 
-This code is released under the MIT License. The underlying SATSA and dental student datasets are subject to their respective data use agreements (ICPSR and PLOS ONE).
+This code is released under the MIT License. 
+
+The SATSA data are licensed for secondary use and analysis via ICPSR. The dental student dataset is publicly available via the PLOS ONE supplementary materials.
 
 ---
 
@@ -369,6 +381,8 @@ For questions regarding the code or methodology, please open an issue on this re
 
 ## Acknowledgments
 
-- SATSA data provided by ICPSR (Study #3843)
+- SATSA data provided by the Inter-university Consortium for Political and Social Research (ICPSR)
 - Dental student data from Leite et al. (2025), PLOS ONE
-- Computational framework developed using NumPy, SciPy, pandas, matplotlib, and scikit-learn
+- Numerical integration performed using SciPy
+- Data manipulation using pandas and NumPy
+- Figures generated using Matplotlib
