@@ -2,6 +2,8 @@
 # ECTO: Entropy-Initiated Coupled-Trait ODEs
 
 **Computational Repository for PLOS ONE Submission**
+*by: Anderson M. Rodriguez*
+*2026*
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
