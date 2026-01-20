@@ -357,7 +357,7 @@ If you use this code or methodology, please cite:
 @article{Rodriguez2026,
   title={An Entropy-initiated Coupled-Trait ODE Framework for Modeling Longitudinal Cohort Dynamics},
   author={Rodriguez, Anderson M.},
-  journal={PLOS ONE},
+  journal={place held},
   year={2026},
   doi={[DOI]}
 }
