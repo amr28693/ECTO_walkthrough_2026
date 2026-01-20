@@ -34,7 +34,7 @@ ECTO_PLOS1_repository2026.ipynb
 │   ├── A_6:  Local sensitivity analysis (±10%)
 │   ├── A_7:  Multistart robustness checks
 │   ├── A_8:  Appendix figure generation
-│   ├── A_9, A_9B: Entropy stability under simulated attrition (Appendix B)
+│   ├── A_9, A_9B, A9C: Entropy stability under simulated attrition (Appendix B)
 │   ├── A_10, A_11: Null vs. ECTO model comparison (Appendix C.1)
 │   ├── A_12: Global optimizer with tunable alpha
 │   ├── A_13: Parameter sensitivity heatmaps (Appendix C.2)
