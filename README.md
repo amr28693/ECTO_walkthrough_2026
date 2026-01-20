@@ -311,7 +311,6 @@ The narrow range indicates a well-behaved optimization landscape.
 1. Format Likert data as frequency counts per response category per wave
 2. Compute Shannon entropy: `H = −Σ pᵢ log₂(pᵢ)`
 3. Normalize entropy series: `(x − min) / (max − min)`
-4. Adapt ODE time axis to match wave spacing
 
 ### Modifying the ODE System
 
