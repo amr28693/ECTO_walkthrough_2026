@@ -1,8 +1,10 @@
 [README.md](https://github.com/user-attachments/files/24731681/README.md)
 # ECTO: Entropy-Initiated Coupled-Trait ODEs
 
-**Computational Repository for PLOS ONE Submission**
-*by: Anderson Rodriguez, 2026*
+**Computational Repository Associated with the research article: 'An entropy-initiated coupled-trait ODE framework for modeling longitudinal cohort dynamics'**
+*by: Anderson Rodriguez, PLoS One, 2026*
+
+#https://doi.org/10.1371/journal.pone.0344090#
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
